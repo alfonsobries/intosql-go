@@ -87,6 +87,19 @@ type ErrorCode string
 // FixCode is a correction the engine made, such as "leading_zeros_kept".
 type FixCode string
 
+// ObjectKind is what a database dump defines besides tables, which a conversion lists and does
+// not carry.
+type ObjectKind string
+
+// The objects of a dump that are not converted.
+const (
+	ObjectView      ObjectKind = "view"
+	ObjectTrigger   ObjectKind = "trigger"
+	ObjectProcedure ObjectKind = "procedure"
+	ObjectFunction  ObjectKind = "function"
+	ObjectEvent     ObjectKind = "event"
+)
+
 // JobSpec is a conversion request, the same for the browser, the CLI, the API and MCP.
 type JobSpec struct {
 	Version   int           `json:"version"`
@@ -151,6 +164,48 @@ type JobReport struct {
 	Fixes    []Fix          `json:"fixes"`
 	Problems []Problem      `json:"problems"`
 	Timings  Timings        `json:"timings"`
+	// For a database dump: where it comes from. Nil for any other file.
+	Source *SourceReport `json:"source,omitempty"`
+	// For a database dump: every table, with its own columns, fixes and problems. The fields
+	// above then hold the totals and what concerns the whole dump.
+	Tables []TableReport `json:"tables,omitempty"`
+	// For a database dump: the views, triggers, routines and events it did not carry.
+	NotConverted []NotConverted `json:"not_converted,omitempty"`
+}
+
+// SourceReport is where a database dump comes from.
+type SourceReport struct {
+	// The database that wrote the dump, from its header and syntax.
+	Dialect Dialect `json:"dialect"`
+	// The server version the dump states, such as 8.0.40.
+	Version *string `json:"version,omitempty"`
+	// The program that wrote it, such as mysqldump or phpMyAdmin.
+	Producer *string `json:"producer,omitempty"`
+	// The character set the dump declares, or the one read from its bytes.
+	Charset *string `json:"charset,omitempty"`
+	// The databases the dump holds, in order.
+	Databases []string `json:"databases"`
+}
+
+// TableReport is one table of a database dump, as read and as written.
+type TableReport struct {
+	SourceName string `json:"source_name"`
+	Name       string `json:"name"`
+	// The schema it goes in, when not the default one.
+	Schema *string `json:"schema,omitempty"`
+	// Rows in the dump; rows written when converted.
+	Rows    int64          `json:"rows"`
+	Columns []ColumnReport `json:"columns"`
+	// Fixes about this table and its columns, numbered across the whole report.
+	Fixes    []Fix     `json:"fixes"`
+	Problems []Problem `json:"problems"`
+}
+
+// NotConverted is an object of a dump that the conversion did not carry: it is recreated by hand.
+type NotConverted struct {
+	Kind ObjectKind `json:"kind"`
+	// The name in the dump, with its database when the dump names more than one.
+	Name string `json:"name"`
 }
 
 // DetectedInput is what was detected about the input.

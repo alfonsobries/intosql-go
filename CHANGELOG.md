@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0
+
+- Reports of database dumps: `Source`, `Tables` and `NotConverted`.
+
 ## 0.1.0
 
 - `Convert`, `ConvertFile` and `ConvertURL`: create, upload, start and wait in one call.

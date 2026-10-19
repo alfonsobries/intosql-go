@@ -1,0 +1,411 @@
+{
+    "version": 1,
+    "input": {
+        "format": "sql_dump",
+        "encoding": "utf8mb4",
+        "delimiter": null,
+        "sheet": null,
+        "bytes": 5456
+    },
+    "dialect": "postgresql",
+    "table": "",
+    "columns": [],
+    "rows": {
+        "read": 18,
+        "converted": 18,
+        "rejected": 0
+    },
+    "fixes": [],
+    "problems": [
+        {
+            "code": "not_converted_objects",
+            "severity": "warning",
+            "column": null,
+            "row": null,
+            "args": {
+                "count": "2"
+            }
+        }
+    ],
+    "timings": {
+        "read_ms": 0,
+        "convert_ms": 0,
+        "total_ms": 0
+    },
+    "source": {
+        "dialect": "mysql",
+        "version": "8.0.46",
+        "producer": "mysqldump",
+        "charset": "utf8mb4",
+        "databases": []
+    },
+    "tables": [
+        {
+            "source_name": "customers",
+            "name": "customers",
+            "schema": null,
+            "rows": 8,
+            "columns": [
+                {
+                    "source_name": "id",
+                    "name": "id",
+                    "sql_type": "bigint",
+                    "kind": "bigint",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": null,
+                    "nullable": false,
+                    "fixes": [1],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "name",
+                    "name": "name",
+                    "sql_type": "varchar(100)",
+                    "kind": "text",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": 16,
+                    "nullable": false,
+                    "fixes": [],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "email",
+                    "name": "email",
+                    "sql_type": "varchar(150)",
+                    "kind": "text",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": 17,
+                    "nullable": false,
+                    "fixes": [],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "country",
+                    "name": "country",
+                    "sql_type": "varchar(2)",
+                    "kind": "text",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": 2,
+                    "nullable": false,
+                    "fixes": [],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "is_active",
+                    "name": "is_active",
+                    "sql_type": "boolean",
+                    "kind": "boolean",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": null,
+                    "nullable": false,
+                    "fixes": [],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "signed_up",
+                    "name": "signed_up",
+                    "sql_type": "date",
+                    "kind": "date",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": null,
+                    "nullable": true,
+                    "fixes": [2, 3],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "created_at",
+                    "name": "created_at",
+                    "sql_type": "timestamptz(0)",
+                    "kind": "timestamptz",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": null,
+                    "nullable": false,
+                    "fixes": [],
+                    "excluded": false,
+                    "as_text": false
+                }
+            ],
+            "fixes": [
+                {
+                    "number": 1,
+                    "code": "unsigned_widened",
+                    "column": "id",
+                    "row": null,
+                    "args": {
+                        "column": "id",
+                        "count": "1",
+                        "declared": "int unsigned",
+                        "table": "customers",
+                        "type": "bigint"
+                    }
+                },
+                {
+                    "number": 2,
+                    "code": "not_null_relaxed",
+                    "column": "signed_up",
+                    "row": null,
+                    "args": {
+                        "column": "signed_up",
+                        "count": "1",
+                        "table": "customers"
+                    }
+                },
+                {
+                    "number": 3,
+                    "code": "zero_date_default",
+                    "column": "signed_up",
+                    "row": null,
+                    "args": {
+                        "column": "signed_up",
+                        "count": "1",
+                        "table": "customers",
+                        "value": "0000-00-00"
+                    }
+                }
+            ],
+            "problems": [
+                {
+                    "code": "invalid_date_null",
+                    "severity": "warning",
+                    "column": "signed_up",
+                    "row": null,
+                    "args": {
+                        "column": "signed_up",
+                        "count": "1",
+                        "example": "0000-00-00",
+                        "table": "customers",
+                        "type": "date",
+                        "value": "0000-00-00"
+                    }
+                }
+            ]
+        },
+        {
+            "source_name": "orders",
+            "name": "orders",
+            "schema": null,
+            "rows": 10,
+            "columns": [
+                {
+                    "source_name": "id",
+                    "name": "id",
+                    "sql_type": "bigint",
+                    "kind": "bigint",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": null,
+                    "nullable": false,
+                    "fixes": [5],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "customer_id",
+                    "name": "customer_id",
+                    "sql_type": "bigint",
+                    "kind": "bigint",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": null,
+                    "nullable": false,
+                    "fixes": [4],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "status",
+                    "name": "status",
+                    "sql_type": "text",
+                    "kind": "text",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": 9,
+                    "nullable": false,
+                    "fixes": [7],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "total",
+                    "name": "total",
+                    "sql_type": "numeric(10,2)",
+                    "kind": "decimal",
+                    "precision": 10,
+                    "scale": 2,
+                    "max_chars": null,
+                    "nullable": false,
+                    "fixes": [],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "items",
+                    "name": "items",
+                    "sql_type": "integer",
+                    "kind": "integer",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": null,
+                    "nullable": false,
+                    "fixes": [6],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "ordered_at",
+                    "name": "ordered_at",
+                    "sql_type": "timestamp(0)",
+                    "kind": "timestamp",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": null,
+                    "nullable": false,
+                    "fixes": [],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "shipped_at",
+                    "name": "shipped_at",
+                    "sql_type": "timestamp(0)",
+                    "kind": "timestamp",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": null,
+                    "nullable": true,
+                    "fixes": [],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "note",
+                    "name": "note",
+                    "sql_type": "varchar(255)",
+                    "kind": "text",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": 29,
+                    "nullable": true,
+                    "fixes": [],
+                    "excluded": false,
+                    "as_text": false
+                },
+                {
+                    "source_name": "updated_at",
+                    "name": "updated_at",
+                    "sql_type": "timestamptz(0)",
+                    "kind": "timestamptz",
+                    "precision": null,
+                    "scale": null,
+                    "max_chars": null,
+                    "nullable": false,
+                    "fixes": [8],
+                    "excluded": false,
+                    "as_text": false
+                }
+            ],
+            "fixes": [
+                {
+                    "number": 4,
+                    "code": "unsigned_widened",
+                    "column": "customer_id",
+                    "row": null,
+                    "args": {
+                        "column": "customer_id",
+                        "count": "1",
+                        "declared": "int unsigned",
+                        "table": "orders",
+                        "type": "bigint"
+                    }
+                },
+                {
+                    "number": 5,
+                    "code": "unsigned_widened",
+                    "column": "id",
+                    "row": null,
+                    "args": {
+                        "column": "id",
+                        "count": "1",
+                        "declared": "int unsigned",
+                        "table": "orders",
+                        "type": "bigint"
+                    }
+                },
+                {
+                    "number": 6,
+                    "code": "unsigned_widened",
+                    "column": "items",
+                    "row": null,
+                    "args": {
+                        "column": "items",
+                        "count": "1",
+                        "declared": "smallint unsigned",
+                        "table": "orders",
+                        "type": "integer"
+                    }
+                },
+                {
+                    "number": 7,
+                    "code": "enum_invalid_value",
+                    "column": "status",
+                    "row": null,
+                    "args": {
+                        "column": "status",
+                        "count": "1",
+                        "table": "orders"
+                    }
+                },
+                {
+                    "number": 8,
+                    "code": "on_update_trigger",
+                    "column": "updated_at",
+                    "row": null,
+                    "args": {
+                        "column": "updated_at",
+                        "count": "1",
+                        "table": "orders"
+                    }
+                }
+            ],
+            "problems": [
+                {
+                    "code": "invalid_date_null",
+                    "severity": "warning",
+                    "column": "shipped_at",
+                    "row": null,
+                    "args": {
+                        "column": "shipped_at",
+                        "count": "1",
+                        "example": "0000-00-00 00:00:00",
+                        "table": "orders",
+                        "type": "timestamp(0)",
+                        "value": ""
+                    }
+                }
+            ]
+        }
+    ],
+    "not_converted": [
+        {
+            "kind": "view",
+            "name": "active_customers"
+        },
+        {
+            "kind": "trigger",
+            "name": "orders_bi"
+        }
+    ]
+}
