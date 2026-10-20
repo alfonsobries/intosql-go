@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+- The README says a SQL Server script converts to any of the six databases, and its report carries the codes of each target.
+
 ## 0.3.0
 
 - `ObjectMaterializedView`, `ObjectRule`, `ObjectExtension`, `ObjectPolicy`, `ObjectType` and `ObjectOther`: what PostgreSQL dumps leave out.

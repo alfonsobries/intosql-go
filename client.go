@@ -20,7 +20,7 @@ import (
 )
 
 // Version is this package's version, sent in the User-Agent header.
-const Version = "0.3.0"
+const Version = "0.3.1"
 
 // DefaultBaseURL is the API's address.
 const DefaultBaseURL = "https://intosql.com/api/v1"
