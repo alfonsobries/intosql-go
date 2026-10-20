@@ -98,6 +98,13 @@ const (
 	ObjectProcedure ObjectKind = "procedure"
 	ObjectFunction  ObjectKind = "function"
 	ObjectEvent     ObjectKind = "event"
+	// What PostgreSQL dumps define besides those.
+	ObjectMaterializedView ObjectKind = "materialized_view"
+	ObjectRule             ObjectKind = "rule"
+	ObjectExtension        ObjectKind = "extension"
+	ObjectPolicy           ObjectKind = "policy"
+	ObjectType             ObjectKind = "type"
+	ObjectOther            ObjectKind = "other"
 )
 
 // JobSpec is a conversion request, the same for the browser, the CLI, the API and MCP.

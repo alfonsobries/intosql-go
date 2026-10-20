@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0
+
+- `ObjectMaterializedView`, `ObjectRule`, `ObjectExtension`, `ObjectPolicy`, `ObjectType` and `ObjectOther`: what PostgreSQL dumps leave out.
+
 ## 0.2.1
 
 - The README says a MySQL or MariaDB dump converts to any of the six databases, and its report carries the codes of each target.
