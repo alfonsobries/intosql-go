@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- The README says a MySQL or MariaDB dump converts to any of the six databases, and its report carries the codes of each target.
+
 ## 0.2.0
 
 - Reports of database dumps: `Source`, `Tables` and `NotConverted`.
