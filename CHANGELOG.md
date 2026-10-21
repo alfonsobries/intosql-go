@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0
+
+- The README says an Oracle export converts to any of the six databases.
+
 ## 0.3.2
 
 - The README says MariaDB and SQLite dumps, and SQLite database files, convert to any of the six databases.
