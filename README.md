@@ -30,7 +30,7 @@ fmt.Println(conversion.Report.Rows.Converted, conversion.Output.URL)
 
 The file streams to storage as it is; the output URL downloads the script for ten minutes. Read the conversion again (`client.Conversions.Retrieve(ctx, id)`) for a fresh one. `client.Convert(ctx, reader, size, options)` takes any `io.Reader` with its size.
 
-A MySQL, MariaDB, PostgreSQL or SQL Server dump (`.sql`, `.sql.gz`) converts to any of the six databases like any file. The report then lists each table in `Tables`, with its own columns, fixes and problems, and the views, triggers and routines it did not carry in `NotConverted`.
+A MySQL, MariaDB, PostgreSQL, SQL Server or SQLite dump (`.sql`, `.sql.gz`), or a SQLite database file, converts to any of the six databases like any file. The report then lists each table in `Tables`, with its own columns, fixes and problems, and the views, triggers and routines it did not carry in `NotConverted`.
 
 ```go
 for _, table := range conversion.Report.Tables {

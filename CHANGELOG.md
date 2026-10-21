@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.2
+
+- The README says MariaDB and SQLite dumps, and SQLite database files, convert to any of the six databases.
+
 ## 0.3.1
 
 - The README says a SQL Server script converts to any of the six databases, and its report carries the codes of each target.
